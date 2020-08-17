@@ -10,4 +10,19 @@ class Country extends Model
 	    'name', 'tax',
 	];
 	public $timestamps = false;
+
+	public function ranges()
+	{
+	    return $this->belongsToMany(Range::class, 'colissimos')->withPivot('id', 'price');
+	}
+
+	public function addresses()
+	{
+	    return $this->hasMany(Address::class);
+	}
+
+	public function order_addresses()
+	{
+	    return $this->hasMany(OrderAddress::class);
+	}
 }
