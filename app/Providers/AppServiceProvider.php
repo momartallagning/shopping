@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Cart;
+use Illuminate\Support\Facades\Route;
+use App\Models\Shop;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,5 +33,12 @@ class AppServiceProvider extends ServiceProvider
                 'cartTotal' => Cart::getTotal(),
             ]);
         });
+
+        Route::resourceVerbs([
+            'edit' => 'modification',
+            'create' => 'creation',
+        ]);
+
+        View::share('shop', Shop::firstOrFail());
     }
 }

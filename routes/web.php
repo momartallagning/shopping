@@ -36,3 +36,15 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::name('produits.show')->get('produits/{produit}', 'ProductController');
 
 Route::resource('panier', 'CartController')->only(['index', 'store', 'update', 'destroy']);
+
+// Utilisateur authentifié
+Route::middleware('auth')->group(function () {
+  // Commandes
+  Route::prefix('commandes')->group(function () {
+  	  Route::name('commandes.details')->post('details', 'DetailsController');
+      Route::resource('/', 'OrderController')->names([
+          'create' => 'commandes.create',
+          'store' => 'commandes.store',
+      ])->only(['create', 'store']);
+  });
+});
