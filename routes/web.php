@@ -46,5 +46,6 @@ Route::middleware('auth')->group(function () {
           'create' => 'commandes.create',
           'store' => 'commandes.store',
       ])->only(['create', 'store']);
+      Route::name('commandes.confirmation')->get('confirmation/{order}', 'OrdersController@confirmation');
   });
 });
