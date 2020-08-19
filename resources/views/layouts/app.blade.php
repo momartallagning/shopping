@@ -29,9 +29,14 @@
 
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo"><img src="/images/logo1.png" width="210px" alt="Logo"></a>
-      <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <a href="{{ route('home') }}" class="brand-logo"><img src="{{ asset('images/logo1.png') }}" width="210px" alt="Logo"></a>
+      <a href="{{ route('home') }}" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
+        @if($cartCount)
+          <li>
+            <a class="tooltipped" href="{{ route('panier.index') }}" data-position="bottom" data-tooltip="Voir mon panier"><i class="material-icons left">shopping_cart</i>Panier({{ $cartCount }})</a>
+          </li>
+        @endif
       @guest        
         <li><a href="{{ route('login') }}"><i class="material-icons left">perm_identity</i>Connexion</a></li>
       @else
@@ -48,6 +53,11 @@
   </nav>
 
   <ul class="sidenav" id="mobile">
+    @if($cartCount)
+      <li>
+        <a class="tooltipped" href="{{ route('panier.index') }}" data-position="bottom" data-tooltip="Voir mon panier">Panier({{ $cartCount }})</a>
+      </li>
+    @endif
     @guest
       <li><a href="{{ route('login') }}">Connexion</a></li>
     @else
@@ -73,7 +83,7 @@
             <li class="grey-text text-lighten-3">Appelez-nous...</li>
             <li class="grey-text text-lighten-3">Écrivez-nous...</li>
             <br>
-            <li><img src="/images/paiement.png" alt="Modes de paiement" width="250px"></li>
+            <li><img src="{{ asset('images/paiement.png') }}" alt="Modes de paiement" width="250px"></li>
           </ul>
         </div>
         <div class="col l4 offset-l2 s12">
@@ -84,7 +94,7 @@
     <div class="footer-copyright">
       <div class="container">
         © 2020 Nom de la boutique
-        <a class="grey-text text-lighten-4 right" href="#" target="_blank"><img src="/images/facebook.png" alt="Facebook"></a>
+        <a class="grey-text text-lighten-4 right" href="#" target="_blank"><img src="{{ asset('images/facebook.png') }}" alt="Facebook"></a>
       </div>
     </div>
   </footer>

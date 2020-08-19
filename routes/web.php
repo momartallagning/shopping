@@ -32,3 +32,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::name('produits.show')->get('produits/{produit}', 'ProductController');
+
+Route::resource('panier', 'CartController')->only(['index', 'store', 'update', 'destroy']);
