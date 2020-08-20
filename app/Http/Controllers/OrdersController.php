@@ -72,4 +72,22 @@ class OrdersController extends Controller
 	    
 	    return $data;
 	}
+
+    public function index(Request $request)
+    {
+        $orders = $request->user()->orders()->with('state')->get();
+
+        return view('account.orders.index', compact('orders'));
+    }
+
+    public function show(Request $request, $id)
+    {
+        $order = Order::with('products', 'state', 'adresses', 'adresses.country')->findOrFail($id);
+
+        $this->authorize('manage', $order);
+
+        $data = $this->data($request, $order);
+
+        return view('account.orders.show', $data);
+    }
 }

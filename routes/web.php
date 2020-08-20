@@ -47,6 +47,8 @@ Route::middleware('auth')->group(function () {
         Route::name('rgpd')->get('rgpd', 'IdentiteController@rgpd');
         Route::name('rgpd.pdf')->get('rgpd/pdf', 'IdentiteController@pdf');
         Route::resource('adresses', 'AddressController')->except('show');
+        Route::resource('commandes', 'OrdersController')->only(['index', 'show'])->parameters(['commandes' => 'order']);
+        Route::name('invoice')->get('commandes/{order}/invoice', 'InvoiceController');
     });
   // Commandes
   Route::prefix('commandes')->group(function () {
