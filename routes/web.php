@@ -39,6 +39,14 @@ Route::resource('panier', 'CartController')->only(['index', 'store', 'update', '
 
 // Utilisateur authentifié
 Route::middleware('auth')->group(function () {
+	// Gestion du compte
+    Route::prefix('compte')->group(function () {
+        Route::name('account')->get('/', 'AccountController');
+        Route::name('identite.edit')->get('identite', 'IdentiteController@edit');
+        Route::name('identite.update')->put('identite', 'IdentiteController@update');
+        Route::name('rgpd')->get('rgpd', 'IdentiteController@rgpd');
+        Route::name('rgpd.pdf')->get('rgpd/pdf', 'IdentiteController@pdf');
+    });
   // Commandes
   Route::prefix('commandes')->group(function () {
   	  Route::name('commandes.details')->post('details', 'DetailsController');
