@@ -30,7 +30,7 @@ class OrderController extends Controller
         $addresses = $request->user()->addresses()->get();
 
         if($addresses->isEmpty()) {
-            // Là il faudra renvoyer l'utilisateur sur son compte quand on l'aura créé
+            return redirect()->route('adresses.create')->with('message', 'Vous devez créer au moins une adresse pour passer une commande.');
         }
 
         $country_id = $addresses->first()->country_id;

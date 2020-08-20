@@ -62,10 +62,10 @@ body { background-color: #f1f1ff; };
   100% { transform: rotate(360deg); }
 }
 
-.btn-large {
-  margin-bottom: 30px;
+#account .btn-large {
+  margin-bottom: 30px !important;
 }
 
 #account a {
-  width: 100%;
+  width: 100% !important;
 }

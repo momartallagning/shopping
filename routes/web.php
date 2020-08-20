@@ -46,6 +46,7 @@ Route::middleware('auth')->group(function () {
         Route::name('identite.update')->put('identite', 'IdentiteController@update');
         Route::name('rgpd')->get('rgpd', 'IdentiteController@rgpd');
         Route::name('rgpd.pdf')->get('rgpd/pdf', 'IdentiteController@pdf');
+        Route::resource('adresses', 'AddressController')->except('show');
     });
   // Commandes
   Route::prefix('commandes')->group(function () {
