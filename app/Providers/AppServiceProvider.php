@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Cart;
 use Illuminate\Support\Facades\Route;
-use App\Models\Shop;
+use App\Models\{ Shop, Page };
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -39,6 +39,7 @@ class AppServiceProvider extends ServiceProvider
             'create' => 'creation',
         ]);
 
-        // View::share('shop', Shop::firstOrFail());
+        View::share('shop', Shop::firstOrFail());
+        View::share('pages', Page::all());
     }
 }

@@ -61,3 +61,5 @@ Route::middleware('auth')->group(function () {
       Route::name('commandes.payment')->post('paiement/{order}', 'PaymentController');
   });
 });
+
+Route::get('page/{page:slug}', 'HomeController@page')->name('page');

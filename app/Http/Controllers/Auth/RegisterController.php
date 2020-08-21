@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Registered;
+use App\Notifications\NewUser;
 
 class RegisterController extends Controller
 {
@@ -76,8 +77,8 @@ class RegisterController extends Controller
         Mail::to($user)->send(new Registered($shop));
         $admins = User::whereAdmin(true)->get();
         foreach($admins as $admin) {
-            // Là on prévoira de notifier les administrateurs
-        }        
+            $admin->notify(new NewUser());
+        }         
         return redirect(route('adresses.create'))->with('message', config('messages.registered'));
     }
 }
