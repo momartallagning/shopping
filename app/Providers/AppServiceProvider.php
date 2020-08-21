@@ -39,6 +39,6 @@ class AppServiceProvider extends ServiceProvider
             'create' => 'creation',
         ]);
 
-        View::share('shop', Shop::firstOrFail());
+        // View::share('shop', Shop::firstOrFail());
     }
 }
