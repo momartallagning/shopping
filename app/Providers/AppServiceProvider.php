@@ -39,8 +39,8 @@ class AppServiceProvider extends ServiceProvider
             'create' => 'creation',
         ]);
 
-        View::share('shop', Shop::firstOrFail());
-        View::share('pages', Page::all());
+        // View::share('shop', Shop::firstOrFail());
+        // View::share('pages', Page::all());
 
         View::composer('back.layout', function ($view) {
             $title = config('titles.' . Route::currentRouteName());

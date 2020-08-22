@@ -41,12 +41,36 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-          <x-menu-item 
-            :href="route('admin')" 
-            icon="tachometer-alt" 
-            :active="currentRouteActive('admin')">
-            Tableau de bord
-          </x-menu-item>
+            <x-menu-item 
+              :href="route('admin')" 
+              icon="tachometer-alt" 
+              :active="currentRouteActive('admin')">
+              Tableau de bord
+            </x-menu-item>
+          <li class="nav-item has-treeview {{ menuOpen(
+                'shop.edit',
+                'shop.update'
+            ) }}">
+            <a href="#" class="nav-link {{ currentRouteActive(
+                'shop.edit',
+                'shop.update'
+              ) }}">
+              <i class="nav-icon fas fa-cogs"></i>
+              <p>
+                Administration
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <x-menu-item 
+                :href="route('shop.edit')" 
+                :sub=true
+                icon="shopping-cart " 
+                :active="currentRouteActive('shop.edit', 'shop.update')">
+                Boutique
+              </x-menu-item>
+            </ul>
+          </li>
     
         </ul>
       </nav>

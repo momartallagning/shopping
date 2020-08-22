@@ -8,4 +8,5 @@ return [
     'addresssaved' => "L'adresse a bien été enregistrée.",
     'addressupdated' => "L'adresse a bien été modifiée.",
     'addressdeleted' => "L'adresse a bien été supprimée.",
+    'shopupdated' => 'La boutique a bien été mise à jour.',
 ];

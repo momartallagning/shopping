@@ -11,4 +11,7 @@ return [
     */
 
     'admin' => 'Tableau de bord',
+    'shop' => [
+        'edit' => 'Gestion de la boutique',
+    ],
 ];

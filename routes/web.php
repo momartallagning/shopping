@@ -65,6 +65,8 @@ Route::middleware('auth')->group(function () {
 	Route::prefix('admin')->middleware('admin')->namespace('Back')->group(function () {
 	    Route::name('admin')->get('/', 'AdminController@index');
 	    Route::name('read')->put('read/{type}', 'AdminController@read');
+	    Route::name('shop.edit')->get('boutique', 'ShopController@edit');
+	    Route::name('shop.update')->put('boutique', 'ShopController@update');
 	});
 });
 
