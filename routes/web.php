@@ -50,16 +50,23 @@ Route::middleware('auth')->group(function () {
         Route::resource('commandes', 'OrdersController')->only(['index', 'show'])->parameters(['commandes' => 'order']);
         Route::name('invoice')->get('commandes/{order}/invoice', 'InvoiceController');
     });
-  // Commandes
-  Route::prefix('commandes')->group(function () {
-  	  Route::name('commandes.details')->post('details', 'DetailsController');
-      Route::resource('/', 'OrderController')->names([
-          'create' => 'commandes.create',
-          'store' => 'commandes.store',
-      ])->only(['create', 'store']);
-      Route::name('commandes.confirmation')->get('confirmation/{order}', 'OrdersController@confirmation');
-      Route::name('commandes.payment')->post('paiement/{order}', 'PaymentController');
-  });
+  	// Commandes
+  	Route::prefix('commandes')->group(function () {
+  	  	Route::name('commandes.details')->post('details', 'DetailsController');
+		Route::resource('/', 'OrderController')->names([
+		  'create' => 'commandes.create',
+		  'store' => 'commandes.store',
+		])->only(['create', 'store']);
+      	Route::name('commandes.confirmation')->get('confirmation/{order}', 'OrdersController@confirmation');
+      	Route::name('commandes.payment')->post('paiement/{order}', 'PaymentController');
+  	});
+
+  	// Administration
+	Route::prefix('admin')->middleware('admin')->namespace('Back')->group(function () {
+	    Route::name('admin')->get('/', 'AdminController@index');
+	    Route::name('read')->put('read/{type}', 'AdminController@read');
+	});
 });
 
 Route::get('page/{page:slug}', 'HomeController@page')->name('page');
+

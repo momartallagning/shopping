@@ -41,6 +41,9 @@
         <li><a href="{{ route('login') }}"><i class="material-icons left">perm_identity</i>Connexion</a></li>
       @else
         <li><a class="tooltipped" href="{{ route('account') }}" data-position="bottom" data-tooltip="Voir mon compte client">{{ auth()->user()->firstname . ' ' . auth()->user()->name }}</a></li>
+         @if(auth()->user()->admin)
+          <li><a href="{{ route('admin') }}"><i class="material-icons left">dashboard</i>Administration</a></li>
+        @endif
         <li><a href="{{ route('logout') }}"
           onclick="event.preventDefault();
           document.getElementById('logout-form').submit();">
@@ -63,6 +66,9 @@
       <li><a href="{{ route('login') }}">Connexion</a></li>
     @else
       <li><a class="tooltipped" href="{{ route('account') }}" data-position="bottom" data-tooltip="Voir mon compte client">{{ auth()->user()->firstname . ' ' . auth()->user()->name }}</a></li>
+       @if(auth()->user()->admin)
+        <li><a href="{{ route('admin') }}"><i class="material-icons left">dashboard</i>Administration</a></li>
+      @endif
       <li><a href="{{ route('logout') }}"
         onclick="event.preventDefault();
         document.getElementById('logout-form').submit();">
