@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.4/css/adminlte.min.css">
+  @yield('css')
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -49,11 +50,17 @@
             </x-menu-item>
           <li class="nav-item has-treeview {{ menuOpen(
                 'shop.edit',
-                'shop.update'
+                'shop.update',
+                'pays.index',
+                'pays.edit',
+                'pays.create'
             ) }}">
             <a href="#" class="nav-link {{ currentRouteActive(
                 'shop.edit',
-                'shop.update'
+                'shop.update',
+                'pays.index',
+                'pays.edit',
+                'pays.create'
               ) }}">
               <i class="nav-icon fas fa-cogs"></i>
               <p>
@@ -68,6 +75,13 @@
                 icon="shopping-cart " 
                 :active="currentRouteActive('shop.edit', 'shop.update')">
                 Boutique
+              </x-menu-item>
+              <x-menu-item :href="route('pays.index')" :sub=true icon="flag" :active="currentRouteActive(
+                  'pays.index', 
+                  'pays.edit',
+                  'pays.create'
+                )">
+                Pays
               </x-menu-item>
             </ul>
           </li>
@@ -120,5 +134,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.4/js/adminlte.min.js"></script>
+@yield('js')
 </body>
 </html>

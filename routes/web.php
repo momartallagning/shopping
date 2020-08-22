@@ -67,6 +67,10 @@ Route::middleware('auth')->group(function () {
 	    Route::name('read')->put('read/{type}', 'AdminController@read');
 	    Route::name('shop.edit')->get('boutique', 'ShopController@edit');
 	    Route::name('shop.update')->put('boutique', 'ShopController@update');
+	    Route::resource('pays', 'CountryController')->except('show')->parameters([
+	      'pays' => 'pays'
+	    ]);
+	    Route::name('pays.destroy.alert')->get('pays/{pays}', 'CountryController@alert');
 	});
 });
 
