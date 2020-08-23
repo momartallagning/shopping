@@ -117,7 +117,8 @@
                 'pages.index',
                 'pages.edit',
                 'pages.create',
-                'pages.destroy.alert'
+                'pages.destroy.alert',
+                'maintenance.edit'
             ) }}">
             <a href="#" class="nav-link {{ currentRouteActive(
                 'shop.edit',
@@ -134,7 +135,8 @@
                 'pages.index',
                 'pages.edit',
                 'pages.create',
-                'pages.destroy.alert'
+                'pages.destroy.alert',
+                'maintenance.edit'
               ) }}">
               <i class="nav-icon fas fa-cogs"></i>
               <p>
@@ -194,6 +196,10 @@
                   </x-menu-item>
                 </ul>
               </li>
+
+              <x-menu-item :href="route('maintenance.edit')" :sub=true icon="tools" :active="currentRouteActive('maintenance.edit')">
+                Maintenance
+              </x-menu-item>
 
             </ul>
           </li>
