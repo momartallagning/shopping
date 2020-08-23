@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\Country;
+use App\Models\State;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
-class CountriesDataTable extends DataTable
+class StatesDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -18,24 +18,27 @@ class CountriesDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('edit', function ($country) {
-                return '<a href="' . route('pays.edit', $country->id) . '" class="btn btn-xs btn-warning btn-block">Modifier</a>';
+            ->addColumn('edit', function ($state) {
+                return '<a href="' . route('etats.edit', $state->id) . '" class="btn btn-xs btn-warning btn-block">Modifier</a>';
             })
-            ->addColumn('destroy', function ($country) {
-                return '<a href="' . route('pays.destroy.alert', $country->id) . '" class="btn btn-xs btn-danger btn-block ' . ($country->ranges->count() || $country->addresses->count() || $country->order_addresses->count() ? 'disabled' : '') .'">Supprimer</a>';
+            ->addColumn('destroy', function ($state) {
+                return '<a href="' . route('etats.destroy.alert', $state->id) . '" class="btn btn-xs btn-danger btn-block ' . ($state->orders->count() ? 'disabled' : '') .'">Supprimer</a>';
             })
-            ->rawColumns(['edit', 'destroy']);
+            ->editColumn('color', function ($state) {
+                return '<i class="fas fa-square fa-lg text-' . config('colors.' . $state->color) . '"></i>';
+            })
+            ->rawColumns(['edit', 'destroy', 'color']);
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Country $model
+     * @param \App\State $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Country $model)
+    public function query(State $model)
     {
-        return $model->with('ranges', 'addresses', 'order_addresses')->newQuery();
+        return $model->with('orders')->newQuery();
     }
 
     /**
@@ -46,11 +49,11 @@ class CountriesDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('countries-table')
+                    ->setTableId('states-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('Blfrtip')
-                    ->orderBy(1)
+                    ->orderBy(5)
                     ->lengthMenu()
                     ->language('//cdn.datatables.net/plug-ins/1.10.20/i18n/French.json');
     }
@@ -65,7 +68,9 @@ class CountriesDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('name')->title('Nom'),
-            Column::make('tax')->title('Taxe'),
+            Column::make('slug')->title('Slug'),
+            Column::make('color')->title('Couleur')->addClass('text-center'),
+            Column::make('indice')->title('indice'),
             Column::computed('edit')
               ->title('')
               ->width(60)
@@ -84,6 +89,6 @@ class CountriesDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Countries_' . date('YmdHis');
+        return 'States_' . date('YmdHis');
     }
 }

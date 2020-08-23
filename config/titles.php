@@ -25,4 +25,9 @@ return [
     'colissimos' => [
         'edit' => 'Gestion des tarifs postaux',
     ],
+    'etats' => [
+        'index' => 'Gestion des états',
+        'edit' => 'Modification d\'un état',
+        'create' => 'Création d\'un état',
+    ],
 ];

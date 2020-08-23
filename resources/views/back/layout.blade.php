@@ -55,7 +55,11 @@
                 'pays.edit',
                 'pays.create',
                 'plages.edit',
-                'colissimos.edit'
+                'colissimos.edit',
+                'etats.index', 
+                'etats.edit', 
+                'etats.create', 
+                'etats.destroy.alert'
             ) }}">
             <a href="#" class="nav-link {{ currentRouteActive(
                 'shop.edit',
@@ -64,7 +68,11 @@
                 'pays.edit',
                 'pays.create',
                 'plages.edit',
-                'colissimos.edit'
+                'colissimos.edit',
+                'etats.index', 
+                'etats.edit', 
+                'etats.create', 
+                'etats.destroy.alert'
               ) }}">
               <i class="nav-icon fas fa-cogs"></i>
               <p>
@@ -79,6 +87,14 @@
                 icon="shopping-cart " 
                 :active="currentRouteActive('shop.edit', 'shop.update')">
                 Boutique
+              </x-menu-item>
+              <x-menu-item :href="route('etats.index')" :sub=true icon="signal" :active="currentRouteActive(
+                  'etats.index', 
+                  'etats.edit', 
+                  'etats.create', 
+                  'etats.destroy.alert'
+                )">
+                Etats de commande
               </x-menu-item>
               <x-menu-item :href="route('pays.index')" :sub=true icon="flag" :active="currentRouteActive(
                   'pays.index', 
