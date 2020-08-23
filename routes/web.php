@@ -79,6 +79,8 @@ Route::middleware('auth')->group(function () {
 	    Route::name('etats.destroy.alert')->get('etats/{etat}', 'StateController@alert');
 	    Route::resource('pages', 'PageController')->except('show');
 	    Route::name('pages.destroy.alert')->get('pages/{page}', 'PageController@alert');
+	    Route::resource('produits', 'ProductController')->except('show');
+	    Route::name('produits.destroy.alert')->get('produits/{produit}', 'ProductController@alert');
 	});
 });
 

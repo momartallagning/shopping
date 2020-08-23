@@ -48,6 +48,25 @@
               :active="currentRouteActive('admin')">
               Tableau de bord
             </x-menu-item>
+
+          <li class="nav-item has-treeview {{ menuOpen('produits.index', 'produits.edit', 'produits.create' , 'produits.destroy.alert') }}">
+            <a href="#" class="nav-link {{ currentRouteActive('produits.index', 'produits.edit', 'produits.create' , 'produits.destroy.alert') }}">
+              <i class="nav-icon fas fa-store"></i>
+              <p>
+                Catalogue
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <x-menu-item :href="route('produits.index')" :sub=true icon="shopping-cart" :active="currentRouteActive('produits.index', 'produits.edit' , 'produits.destroy.alert')">
+                Produits
+              </x-menu-item>
+              <x-menu-item :href="route('produits.create')" :sub=true icon="plus-circle" :active="currentRouteActive('produits.create')">
+                Nouveau produit
+              </x-menu-item>
+            </ul>
+          </li>
+
           <li class="nav-item has-treeview {{ menuOpen(
                 'shop.edit',
                 'shop.update',
