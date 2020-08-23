@@ -53,14 +53,18 @@
                 'shop.update',
                 'pays.index',
                 'pays.edit',
-                'pays.create'
+                'pays.create',
+                'plages.edit',
+                'colissimos.edit'
             ) }}">
             <a href="#" class="nav-link {{ currentRouteActive(
                 'shop.edit',
                 'shop.update',
                 'pays.index',
                 'pays.edit',
-                'pays.create'
+                'pays.create',
+                'plages.edit',
+                'colissimos.edit'
               ) }}">
               <i class="nav-icon fas fa-cogs"></i>
               <p>
@@ -83,6 +87,25 @@
                 )">
                 Pays
               </x-menu-item>
+
+              <li class="nav-item has-treeview {{ menuOpen('plages.edit', 'colissimos.edit') }}">
+                <a href="#" class="nav-link {{ currentRouteActive('plages.edit', 'colissimos.edit') }}">
+                  <i class="nav-icon far fa-paper-plane"></i>
+                  <p>
+                    Expéditions
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <x-menu-item :href="route('plages.edit')" :sub=false icon="tasks" :subsub=true :active="currentRouteActive('plages.edit')">
+                    Plages
+                  </x-menu-item>
+                  <x-menu-item :href="route('colissimos.edit')" :sub=false icon="money-bill-alt" :subsub=true :active="currentRouteActive('colissimos.edit')">
+                    Tarifs
+                  </x-menu-item>
+                </ul>
+              </li>
+
             </ul>
           </li>
     

@@ -71,6 +71,10 @@ Route::middleware('auth')->group(function () {
 	      'pays' => 'pays'
 	    ]);
 	    Route::name('pays.destroy.alert')->get('pays/{pays}', 'CountryController@alert');
+	    Route::name('plages.edit')->get('plages/modification', 'RangeController@edit');
+	    Route::name('plages.update')->put('plages', 'RangeController@update');
+	    Route::name('colissimos.edit')->get('colissimos/modification', 'ColissimoController@edit');
+	    Route::name('colissimos.update')->put('colissimos', 'ColissimoController@update');
 	});
 });
 
