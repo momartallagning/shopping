@@ -15,4 +15,6 @@ return [
     'colissimosupdated' => 'Les tarifs Colissimo ont bien été mis à jour.',
     'stateupdated' => 'L\'état a bien été mis à jour.',
     'statecreated' => 'L\'état a bien été créé.',
+    'pageupdated' => 'La page a bien été mise à jour.',
+    'pagecreated' => 'La page a bien été créée.',
 ];

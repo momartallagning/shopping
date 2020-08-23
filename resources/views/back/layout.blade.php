@@ -59,7 +59,11 @@
                 'etats.index', 
                 'etats.edit', 
                 'etats.create', 
-                'etats.destroy.alert'
+                'etats.destroy.alert',
+                'pages.index',
+                'pages.edit',
+                'pages.create',
+                'pages.destroy.alert'
             ) }}">
             <a href="#" class="nav-link {{ currentRouteActive(
                 'shop.edit',
@@ -72,7 +76,11 @@
                 'etats.index', 
                 'etats.edit', 
                 'etats.create', 
-                'etats.destroy.alert'
+                'etats.destroy.alert',
+                'pages.index',
+                'pages.edit',
+                'pages.create',
+                'pages.destroy.alert'
               ) }}">
               <i class="nav-icon fas fa-cogs"></i>
               <p>
@@ -88,6 +96,7 @@
                 :active="currentRouteActive('shop.edit', 'shop.update')">
                 Boutique
               </x-menu-item>
+
               <x-menu-item :href="route('etats.index')" :sub=true icon="signal" :active="currentRouteActive(
                   'etats.index', 
                   'etats.edit', 
@@ -96,12 +105,22 @@
                 )">
                 Etats de commande
               </x-menu-item>
+
               <x-menu-item :href="route('pays.index')" :sub=true icon="flag" :active="currentRouteActive(
                   'pays.index', 
                   'pays.edit',
                   'pays.create'
                 )">
                 Pays
+              </x-menu-item>
+
+              <x-menu-item :href="route('pages.index')" :sub=true icon="file-alt" :active="currentRouteActive(
+                  'pages.index',
+                  'pages.edit',
+                  'pages.create',
+                  'pages.destroy.alert'
+                )">
+                Pages
               </x-menu-item>
 
               <li class="nav-item has-treeview {{ menuOpen('plages.edit', 'colissimos.edit') }}">
