@@ -49,6 +49,13 @@
               Tableau de bord
             </x-menu-item>
 
+            <x-menu-item 
+              :href="route('orders.index')" 
+              icon="shopping-basket"
+              :active="currentRouteActive('orders.index', 'orders.show')">
+              Commandes
+            </x-menu-item>
+
           <li class="nav-item has-treeview {{ menuOpen(
               'clients.index', 
               'clients.show', 
