@@ -27,6 +27,7 @@ $factory->define(User::class, function (Faker $faker) {
         'newsletter' => $faker->boolean(),
         'last_seen' => $faker->dateTimeBetween('-6 months'),
         'admin' => false,
+        'principale' => 0,
         'created_at' => $faker->dateTimeBetween('-4 years', '-6 months'),
     ];
 });

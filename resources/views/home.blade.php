@@ -6,14 +6,14 @@
   <div class="row">     
     <div class="card">
       <div class="card-content">
-      <span class="card-title center-align">{{ $shop->home }}</span>
+      <span class="card-title center-align">{{ $shop->home ?? '' }}</span>
         <br>
         <ul class="collapsible">
           <li>
             <div class="collapsible-header"><i class="material-icons">info</i>Informations générales</div>
             <div class="collapsible-body informations">
               <ul>
-                <li>{{ $shop->home_infos }}</li>
+                <li>{{ $shop->home_infos ?? '' }}</li>
               </ul>
             </div>
           </li>
@@ -21,7 +21,7 @@
             <div class="collapsible-header"><i class="material-icons">local_shipping</i>Frais d'expédition</div>
             <div class="collapsible-body informations">
               <ul>
-                <li>{{ $shop->home_shipping }}</li>
+                <li>{{ $shop->home_shipping ?? '' }}</li>
               </ul>
             </div>
           </li>
