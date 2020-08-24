@@ -19,10 +19,11 @@ class CreateProductsTable extends Migration
             $table->decimal('price');
             $table->decimal('weight');
             $table->boolean('active')->default(false);
-            $table->integer('quantity')->defaut(0);
+            $table->integer('quantity')->default(0);
             $table->integer('quantity_alert')->default(10);
             $table->string('image')->nullable();
             $table->text('description');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
